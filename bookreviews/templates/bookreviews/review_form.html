@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <a href="{% url 'books:book_detail' book.slug %}" class="btn btn-outline-secondary mb-3">← Zurück zum Buch</a>
+
+  <h4>Deine Bewertung für <strong>{{ book.title }}</strong></h4>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Sterne-Bewertung (1 bis 5):</label>
+      {{ form.rating }}
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Kommentar:</label>
+      {{ form.comment }}
+    </div>
+    <button type="submit" class="btn btn-primary">Absenden</button>
+  </form>
+</div>
+{% endblock %}

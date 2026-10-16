@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %} {% block content %} {% load custom_tags %}
+
+<div class="container-fluid px-0">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content align-items-center">
+      <h1 class="display-4 fw-bold">Welcome to BookShop</h1>
+      <p class="lead mb-4">
+        Discover Your Next Great Read with AI-Driven Recommendations
+      </p>
+      <a href="{% url 'book_list' %}" class="btn btn-light btn-lg">Explore Our Books</a>
+    </div>
+  </section>
+
+
+  <!-- Featured Books Carousel -->
+  <section class="featured-books py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Featured Books</h2>
+      <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          {% for book in featured_books %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="row">
+              <div class="col-md-6 d-flex justify-content-center align-items-center" style="min-height: 300px;">
+                <img src="{{ book.thumbnail }}" class="d-block w-100 img-fluid rounded-3"
+                  style="max-width: 128px; max-height: 192px; object-fit: contain;" alt="{{ book.title }}" />
+              </div>
+              <div class="col-md-6 d-flex align-items-center">
+                <div>
+                  <h3>{{ book.title }}</h3>
+                  <p>{{ book.description|truncatewords:30 }}</p>
+                  <a href="{% url 'books:book_detail' book.slug %}" class="btn btn-outline-primary">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+          <i class="fa-solid fa-chevron-left fa-2x"></i>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+          <i class="fa-solid fa-chevron-right fa-2x"></i>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Category Showcase -->
+  <section class="category-showcase py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Browse by Category</h2>
+      <div class="row">
+        {% for category in homepage_categories %}
+        <div class="col-md-3 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="{% static 'images/categories/' %}{{ category_images|get_item:category.name }}"
+              class="card-img-top img-fluid" alt="{{ category.name }}">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ category.name }}</h5>
+              <p class="card-text">{{ category.books.count }} books</p>
+              <a href="{% url 'book_list' %}?category={{ category.name|urlencode }}" class="btn btn-primary">
+                See {{ category.name }}
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Latest Books -->
+  <section class="latest-books py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Latest Arrivals</h2>
+      <div class="row">
+        {% for book in latest_books %}
+        <div class="col-md-3 mb-4">
+          <div class="card h-100 shadow-sm d-flex flex-column align-items-center p-3">
+            <img src="{{ book.thumbnail }}" style="width: 128px; height: 192px; object-fit: contain;"
+              class="card-img-top img-fluid" alt="{{ book.title }}" />
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <p class="card-text">{{ book.price }} €</p>
+              <a href="{% url 'books:book_detail' book.slug %}" class="btn btn-outline-primary">View Details</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}

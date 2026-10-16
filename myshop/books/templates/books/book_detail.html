@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container mt-4">
+  <a href="{% url 'book_list' %}" class="btn btn-link mb-3">&larr; Back to book list</a>
+
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{ book.thumbnail|default:'/static/images/placeholder.jpg' }}"
+           class="img-fluid rounded shadow" alt="{{ book.title }}">
+    </div>
+    <div class="col-md-8">
+      <h2>{{ book.title }}</h2>
+      {% if avg_rating %}
+        <p><strong>Average Rating:</strong>
+          {% for i in "12345" %}
+            {% if forloop.counter <= avg_rating %}
+              <i class="fas fa-star text-warning"></i>
+            {% else %}
+              <i class="far fa-star text-muted"></i>
+            {% endif %}
+          {% endfor %}
+          <span class="text-muted">({{ avg_rating|floatformat:1 }} out of 5)</span>
+        </p>
+      {% else %}
+        <p><strong>Average Rating:</strong> <span class="text-muted">No ratings yet.</span></p>
+      {% endif %}
+      <p><strong>Author(s):</strong> {{ book.authors }}</p>
+      <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+      <p><strong>Published:</strong> {{ book.published_date }}</p>
+      <p><strong>Category:</strong> {{ book.category.name }}</p>
+      <p><strong>Topic:</strong> <span class="badge bg-info">{{ book.topic_tag }}</span></p>
+      <p><strong>Type:</strong>
+        {% if book.book_type == "educational" %}
+          <span class="badge bg-primary">Educational</span>
+        {% else %}
+          <span class="badge bg-secondary">Novel</span>
+        {% endif %}
+      </p>
+      <p><strong>Price:</strong> {{ book.price }} €</p>
+      {% if book.stock_status %}
+        <p><strong>Stock Status:</strong>
+          {% if book.stock_status == "Out of Stock" %}
+            <span class="badge bg-danger">{{ book.stock_status }}</span>
+          {% elif book.stock_status == "Limited Stock" %}
+            <span class="badge bg-warning">{{ book.stock_status }}</span>
+          {% else %}
+            <span class="badge bg-success">{{ book.stock_status }}</span>
+          {% endif %}
+        </p>
+      {% endif %}
+      <hr>
+      <p><strong>Description:</strong></p>
+      <p>{{ book.description|default:"No description available." }}</p>
+
+      <div class="mt-4 d-flex gap-3">
+        {% if book.stock_status == "Out of Stock" %}
+          <button type="button" class="btn btn-outline-secondary" id="outOfStockBtn" disabled>
+            <i class="fas fa-ban"></i> Out of Stock
+          </button>
+        {% else %}
+          <form method="POST" action="{% url 'cart:add_to_cart' book.slug %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-success">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+          </form>
+        {% endif %}
+
+        <form method="POST" action="{% url 'cart:add_to_wishlist' book.slug %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-danger">
+            <i class="fas fa-heart"></i> Add to Wishlist
+          </button>
+        </form>
+      </div>
+
+      <hr />
+
+      {% if user.is_authenticated %}
+        <div class="mt-4">
+          <h4>Leave a Review</h4>
+          {% if user_review %}
+            <p><strong>Your Rating:</strong>
+              {% for i in "12345" %}
+                {% if forloop.counter <= user_review.rating %}
+                  <i class="fas fa-star text-warning"></i>
+                {% else %}
+                  <i class="far fa-star text-muted"></i>
+                {% endif %}
+              {% endfor %}
+            </p>
+            <p><em>{{ user_review.comment }}</em></p>
+            <form method="post">
+              {% csrf_token %}
+              <button type="submit" name="delete_review" class="btn btn-danger btn-sm">Delete Your Review</button>
+            </form>
+          {% else %}
+            <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label>Rating:</label>
+                <div id="star-rating" class="mb-2">
+                  {% for i in "12345" %}
+                    <i class="fa fa-star far text-muted star-select" data-value="{{ i }}"></i>
+                  {% endfor %}
+                </div>
+                <input type="hidden" name="rating" id="id_rating" value="0">
+              </div>
+              <div class="mb-3">
+                {{ form.comment.label_tag }} {{ form.comment }}
+              </div>
+              <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+          {% endif %}
+        </div>
+      {% else %}
+        <p class="text-muted mt-3">Please <a href="{% url 'login' %}">log in</a> to leave a review.</p>
+      {% endif %}
+
+      <hr />
+
+      <h5 class="mt-4">Other Reviews</h5>
+      {% for review in reviews %}
+        <div class="mb-3 p-2 border rounded bg-light">
+          <strong>{{ review.user.username }}</strong> –
+          {% for i in "12345"|make_list %}
+            {% if forloop.counter <= review.rating %}
+              <i class="fas fa-star text-warning"></i>
+            {% else %}
+              <i class="far fa-star text-muted"></i>
+            {% endif %}
+          {% endfor %}
+          <br />
+          <small>{{ review.created_at }}</small>
+          <p>{{ review.comment }}</p>
+
+          <div class="d-flex align-items-center gap-2">
+            <form action="{% url 'bookreviews:like_review' review.id %}" method="post" style="display: inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-outline-success">👍 {{ review.total_likes }}</button>
+            </form>
+            <form action="{% url 'bookreviews:dislike_review' review.id %}" method="post" style="display: inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-outline-danger">👎 {{ review.total_dislikes }}</button>
+            </form>
+          </div>
+        </div>
+      {% empty %}
+        <p>No other reviews yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const stars = document.querySelectorAll('#star-rating .star-select');
+  const ratingInput = document.getElementById('id_rating');
+
+  if (ratingInput) {
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        const rating = parseInt(star.getAttribute('data-value'));
+        ratingInput.value = rating;
+        stars.forEach((s, i) => {
+          if (i < rating) {
+            s.classList.remove('far', 'text-muted');
+            s.classList.add('fas', 'text-warning');
+          } else {
+            s.classList.add('far', 'text-muted');
+            s.classList.remove('fas', 'text-warning');
+          }
+        });
+      });
+    });
+  }
+
+  const outOfStockBtn = document.getElementById("outOfStockBtn");
+  if (outOfStockBtn) {
+    outOfStockBtn.addEventListener("click", function () {
+      alert("Sorry, this book is out of stock and cannot be added to the cart.");
+    });
+  }
+});
+</script>
+
+{% endblock %}

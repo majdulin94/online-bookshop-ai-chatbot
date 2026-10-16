@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Checkout - Pay with Stripe{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4">
+                <h2 class="mb-4 text-center">Confirm & Pay</h2>
+                <p class="lead text-center">Please review your order and proceed to payment.</p>
+
+                <!-- Order summary -->
+                <div class="mb-4">
+                    <h5>Order Summary</h5>
+                    <ul class="list-group mb-3">
+                        {% for item in order.orderitem_set.all %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ item.book.title }}</strong>
+                                <br>
+                                <small class="text-muted">x{{ item.quantity }}</small>
+                            </div>
+                            <span>{{ item.total_price|floatformat:2 }} €</span>
+                        </li>
+                        {% endfor %}
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>Shipping</div>
+                            {% if shipping %}
+                                <span>{{ shipping|floatformat:2 }} €</span>
+                            {% else %}
+                                <span class="text-success">FREE</span>
+                            {% endif %}
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>Tax (19%)</div>
+                            <span>{{ tax|floatformat:2 }} €</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
+                            <div><strong>Total</strong></div>
+                            <strong>{{ total|floatformat:2 }} €</strong>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Stripe Button -->
+                <div class="text-center mt-4">
+                    <button id="pay-button" class="btn btn-success btn-lg px-5">
+                        <i class="fa fa-credit-card"></i> Pay now with Stripe
+                    </button>
+                </div>
+
+                <!-- Stripe Logo -->
+                <div class="text-center mt-3">
+                    <span class="fw-bold">Stripe Checkout</span>
+                </div>
+
+                <!-- Any warning messages -->
+                <div id="stripe-error-message" class="alert alert-danger mt-3 d-none"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Stripe Script -->
+
+<script>
+    document.getElementById("pay-button").addEventListener("click", function () {
+        fetch("{% url 'orders:create-checkout-session' %}", {
+            method: "POST",
+            headers: { "X-CSRFToken": "{{ csrf_token }}" }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.url) {
+                    window.location.assign(data.url);
+                } else {
+                    document.getElementById("stripe-error-message").textContent = data.error || "Error starting payment.";
+                    document.getElementById("stripe-error-message").classList.remove("d-none");
+                }
+            })
+            .catch(err => {
+                document.getElementById("stripe-error-message").textContent = "An error occurred. Please try again.";
+                document.getElementById("stripe-error-message").classList.remove("d-none");
+            });
+    });
+</script>
+{% endblock %}

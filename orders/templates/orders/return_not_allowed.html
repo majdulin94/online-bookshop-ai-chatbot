@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Return Not Allowed{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-warning text-center p-4">
+        <h4 class="mb-3">Return Period Expired</h4>
+        <p>
+            Sorry, you can only request a return within <strong>14 days</strong> after your order.<br>
+            Order <strong>#{{ order.id }}</strong> was placed on <strong>{{ order.created_at|date:"d.m.Y" }}</strong>.
+        </p>
+        <a href="{% url 'orders:order_history' %}" class="btn btn-secondary mt-3">Back to Orders</a>
+    </div>
+</div>
+{% endblock %}

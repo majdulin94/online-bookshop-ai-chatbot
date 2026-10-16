@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center py-5">
+  <h1 class="mb-4">Your account has been successfully activated!</h1>
+  <p class="mb-4">You can now log in to your account.</p>
+  <a href="{% url 'login' %}" class="btn btn-success">Log in</a>
+</div>
+{% endblock %}

@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- 🔗 Breadcrumbs -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'book_list' %}">Books</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+  </nav>
+
+  <!-- Search + Category Filter Row -->
+  <form method="get" action="{% url 'book_list' %}" class="row mb-4 align-items-center">
+    <!-- Search -->
+    <div class="col-md-4 mb-2 mb-md-0">
+      <input type="text" name="q" class="form-control" placeholder="Search books..." value="{{ query }}">
+    </div>
+
+    <!-- Filter by Category -->
+    <div class="col-md-3 mb-2 mb-md-0">
+      <select name="category" class="form-select" id="category-select" onchange="this.form.submit()">
+        <option value="" {% if not selected_category %}selected{% endif %}>All Categories</option>
+        {% for cat in categories %}
+          <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Filter by Topic -->
+    <div class="col-md-3 mb-2 mb-md-0">
+      <select name="topic" class="form-select" id="topic-select">
+        <option value="" {% if not selected_topic %}selected{% endif %}>All Topics</option>
+        {% for item in category_topic_list %}
+          <optgroup label="{{ item.category }}">
+            {% for topic in item.topics %}
+              <option value="{{ topic }}" {% if selected_topic == topic %}selected{% endif %}>{{ topic }}</option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Filter Button -->
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Filter</button>
+    </div>
+
+    <div class="col-md-2 d-flex align-items-center">
+      <input type="checkbox" class="form-check-input me-2" id="in_stock" name="in_stock" value="1"
+             {% if request.GET.in_stock == "1" %}checked{% endif %}
+             onchange="this.form.submit()">
+      <label class="form-check-label" for="in_stock">In Stock Only</label>
+    </div>
+  </form>
+
+  <h2 class="mb-3">Available Books</h2>
+  <div class="row">
+    {% for book in page_obj %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 book-card shadow-sm border-light rounded">
+          <img src="{{ book.thumbnail }}" class="card-img-top" style="width: 128px; height: 192px; object-fit: contain; margin: 0 auto; display: block;" alt="{{ book.title }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text"><strong>Author(s):</strong> {{ book.authors }}</p>
+            <p class="card-text"><strong>Publisher:</strong> {{ book.publisher }}</p>
+            <p class="card-text"><strong>Published:</strong> {{ book.published_date }}</p>
+            <p class="card-text"><strong>Category:</strong> {{ book.category.name }}</p>
+            <p class="card-text"><strong>Topic:</strong> <span class="badge bg-info">{{ book.topic_tag }}</span></p>
+            <p class="card-text"><strong>Type:</strong>
+              {% if book.book_type == "educational" %}
+                <span class="badge bg-primary">Educational</span>
+              {% else %}
+                <span class="badge bg-secondary">Novel</span>
+              {% endif %}
+            </p>
+            <p class="card-text"><strong>Price:</strong> {{ book.price }} €</p>
+
+            {% if book.stock_status == "Out of Stock" %}
+              <p class="card-text"><span class="badge bg-danger">{{ book.stock_status }}</span></p>
+            {% elif book.stock_status == "Limited Stock" %}
+              <p class="card-text"><span class="badge bg-warning">{{ book.stock_status }}</span></p>
+            {% elif book.stock_status %}
+              <p class="card-text"><span class="badge bg-success">{{ book.stock_status }}</span></p>
+            {% endif %}
+
+            <div class="mt-auto">
+              <!-- View Details -->
+              <a href="{% url 'books:book_detail' book.slug %}" class="btn btn-outline-primary w-100 rounded-pill mb-2">
+                <i class="fa-solid fa-eye me-1"></i> View Details
+              </a>
+
+              <!-- Add to Cart -->
+              <form method="post" action="{% url 'cart:add_to_cart' book.slug %}" class="mb-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-success w-100 rounded-pill">
+                  <i class="fa-solid fa-cart-plus me-1"></i> Add to Cart
+                </button>
+              </form>
+
+              <!-- Add to Wishlist -->
+              <form method="post" action="{% url 'cart:add_to_wishlist' book.slug %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-secondary w-100 rounded-pill">
+                  <i class="fa-regular fa-heart me-1"></i> Wishlist
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12 text-center">
+        <p>No books available at the moment.</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Pagination -->
+<nav aria-label="Page navigation" class="mt-4">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.number > 1 %}
+      <li class="page-item">
+        <a class="page-link" href="?q={{ query }}{% if filter_type %}&type={{ filter_type }}{% endif %}{% if selected_topic %}&topic={{ selected_topic }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}&page=1" aria-label="First">&laquo;&laquo;</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled"><span class="page-link">&laquo;&laquo;</span></li>
+    {% endif %}
+
+    {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?q={{ query }}{% if filter_type %}&type={{ filter_type }}{% endif %}{% if selected_topic %}&topic={{ selected_topic }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}&page={{ page_obj.previous_page_number }}" aria-label="Previous">&laquo;</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+          <a class="page-link" href="?q={{ query }}{% if filter_type %}&type={{ filter_type }}{% endif %}{% if selected_topic %}&topic={{ selected_topic }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}&page={{ num }}">{{ num }}</a>
+        </li>
+      {% elif num == page_obj.number|add:'-3' or num == page_obj.number|add:'3' %}
+        <li class="page-item disabled"><span class="page-link">…</span></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?q={{ query }}{% if filter_type %}&type={{ filter_type }}{% endif %}{% if selected_topic %}&topic={{ selected_topic }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}&page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+    {% endif %}
+
+    {% if page_obj.number < page_obj.paginator.num_pages %}
+      <li class="page-item">
+        <a class="page-link" href="?q={{ query }}{% if filter_type %}&type={{ filter_type }}{% endif %}{% if selected_topic %}&topic={{ selected_topic }}{% endif %}{% if selected_category %}&category={{ selected_category }}{% endif %}&page={{ page_obj.paginator.num_pages }}" aria-label="Last">&raquo;&raquo;</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled"><span class="page-link">&raquo;&raquo;</span></li>
+    {% endif %}
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const topicSelect = document.getElementById("topic-select");
+    const categorySelect = document.getElementById("category-select");
+
+    if (topicSelect && categorySelect) {
+      topicSelect.addEventListener("change", function () {
+        if (topicSelect.value !== "") {
+          categorySelect.selectedIndex = 0;
+        }
+        topicSelect.form.submit();
+      });
+    }
+  });
+</script>
+
+{% endblock %}

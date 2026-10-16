@@ -1,0 +1,59 @@
+{% load static %}
+<div id="chatbot-container">
+    <button id="open-chatbot-btn" type="button">
+        <span id="lottie-chatbot-icon"></span>
+    </button>
+    <div id="chatbot-window" class="card shadow-lg">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <span class="chatbot-title">
+                <span class="chatbot-title-icon" id="lottie-chatbot-title"></span>
+                <span class="chatbot-title-text"><span>BookShop Chatbot</span></span>
+            </span>
+            <div>
+                <button id="close-chatbot-btn" class="btn btn-sm btn-light"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="card-body p-2" id="chatbot-messages" style="height: 380px; overflow-y: auto; background: #f8f9fa;">
+            <!-- Collapsible session blocks will be rendered here by JS -->
+        </div>
+        <!-- Quick replies area -->
+        <div id="chatbot-quick-replies" class="mt-2"></div>
+        <div class="card-footer p-2">
+            <!-- Filters area -->
+            <div id="chatbot-filters" class="mb-2 d-flex flex-wrap gap-2 align-items-center">
+                <input id="filter-min-price" type="number" class="form-control" placeholder="Min €" min="0" style="width:90px;">
+                <input id="filter-max-price" type="number" class="form-control" placeholder="Max €" min="0" style="width:90px;">
+                <input id="filter-min-rating" type="number" class="form-control" placeholder="Min Rating" min="1" max="5" step="0.1" style="width:100px;">
+                <select id="filter-stock-status" class="form-select" style="width:130px;">
+                    <option value="">Any Stock</option>
+                    <option value="In Stock">In Stock</option>
+                    <option value="Limited Stock">Limited Stock</option>
+                </select>
+            </div>
+
+            <form id="chatbot-form" autocomplete="off" class="d-flex">
+                <input id="chatbot-input" type="text" class="form-control me-2" placeholder="Ask about any book..." autocomplete="off" required>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Book Card Template (for JS rendering, not visible) -->
+<template id="chatbot-book-card-template">
+    <div class="chatbot-mini-card d-flex align-items-center mb-2 p-2 rounded shadow-sm bg-white" style="min-width:0;">
+        <img class="mini-book-cover rounded me-2" style="width:40px;height:56px;object-fit:cover;" alt="Book cover">
+        <div class="flex-grow-1 mini-book-info" style="min-width:0;">
+            <div class="fw-semibold text-truncate mini-book-title" style="font-size:0.96rem;"></div>
+            <div class="mini-book-author" style="font-size:0.82rem; color:#555;"></div>
+            <div class="mini-book-category" style="font-size:0.80rem; color:#777;"></div>
+            <div class="mini-book-topic" style="font-size:0.80rem; color:#777;"></div>
+            <div class="mini-book-price text-primary" style="font-size:0.88rem;"></div>
+            <div class="mini-book-rating" style="font-size:0.88rem;"></div>
+            <div class="d-flex gap-2 mt-4">
+                <a href="#" class="mini-action-view text-primary" title="View Details"><i class="fas fa-eye"></i></a>
+                <a href="#" class="mini-action-cart text-success" title="Add to Cart"><i class="fas fa-cart-plus"></i></a>
+                <a href="#" class="mini-action-wishlist text-danger" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,273 @@
+[
+  {
+    "file": "myshop/static/animations/book-search.json",
+    "sha256": "0f9801bd875147946220d924aa38b806d5fc8efbfbf1638b985284cd8a1aa3ae",
+    "bytes": 487845,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "animation_name": "Main Scene",
+    "exporter": "@lottiefiles/creator 1.46.0"
+  },
+  {
+    "file": "myshop/static/animations/book-search01.json",
+    "sha256": "c55e74217d149d22b2fb6e9cf491810f1a9f9f1d91f65c657a35d7ddb81f2166",
+    "bytes": 64873,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "animation_name": "arcax_3",
+    "exporter": "LottieFiles AE 0.1.20"
+  },
+  {
+    "file": "myshop/static/animations/bookshop-logo.json",
+    "sha256": "d5c4848f89cfc25c59a47fca50f972d06667a08ffe26e0b6e8221fc55970271f",
+    "bytes": 137704,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/animations/chatbot-animated.json",
+    "sha256": "2d6b744b205d9b44cddf173333f62252ef66798eb09ff51aa8fa5e216ec58827",
+    "bytes": 61781,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "animation_name": "Bot Say Hello",
+    "exporter": "@lottiefiles/toolkit-js 0.26.1"
+  },
+  {
+    "file": "myshop/static/animations/chatbot-animated01.json",
+    "sha256": "999c67d882209558738dd315fe3a9c38fd6ed934c031549e2710ed768db49203",
+    "bytes": 31291,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "animation_name": "bot 01 12 thanks",
+    "exporter": "@lottiefiles/toolkit-js 0.21.3"
+  },
+  {
+    "file": "myshop/static/animations/chatbot-titel.json",
+    "sha256": "b4c1b6f4273b0a3734978f137e89966a545ad52fb13326edd0927259ad68be49",
+    "bytes": 43224,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "animation_name": "chatbot"
+  },
+  {
+    "file": "myshop/static/animations/chatbot-titel01.json",
+    "sha256": "a94f249c8ced030268ec37066bdc73fe413a92a475efb06933ff2545bd8832df",
+    "bytes": 15954,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "animation_name": "chatbot2",
+    "exporter": "LottieFiles AE 0.1.20"
+  },
+  {
+    "file": "myshop/static/animations/chatbot-titel02.json",
+    "sha256": "ec84c9d9c5f6743df90da8c861c1e89f2e0ab6057938eb5bc003eb864f888f78",
+    "bytes": 21498,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "animation_name": "chatbot final"
+  },
+  {
+    "file": "myshop/static/images/books.jpg",
+    "sha256": "74cd161151d0fd3f08b678cbafe430ea732d8ab2013bd74a51a1d2acef77ea78",
+    "bytes": 238477,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/arts-design.jpg",
+    "sha256": "3d3607fb393ed368c26b105a4cdb77948a7b0b8d6eed9a3c5e38e520e653a5f6",
+    "bytes": 101829,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "description": "Colorful vector hand drawn doodle cartoon set of design theme items, objects and symbols"
+  },
+  {
+    "file": "myshop/static/images/categories/biography-autobiography.jpg",
+    "sha256": "44e34d7df8b7ae6e4ac7348cef6164a1fa8ed506486c8e07c6e0a060c45a8a5c",
+    "bytes": 136658,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "artist": "Zolak",
+    "description": "Biography word written on wood block, life concept."
+  },
+  {
+    "file": "myshop/static/images/categories/business.jpg",
+    "sha256": "0220f7e1e57c2a204c0bec6f378629dbc96136fbe2408096b085eae45a29cb7d",
+    "bytes": 193094,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/education.jpg",
+    "sha256": "a60d12bbbbe3e0a4cb3c5caf00eeda33107c1550d8c7ef0e15c945fa9739bc7f",
+    "bytes": 57149,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/health-medical.jpg",
+    "sha256": "f4084639640cc2d868175247789f333496fa08c4d9acf5bf0a5ca326177fe9e8",
+    "bytes": 53790,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/history-politics.jpg",
+    "sha256": "2c9ab9e8d5c4130e6050ae9f7b4870e848d1d53076a7ce6406bef27f74b95432",
+    "bytes": 300994,
+    "restored": false,
+    "source": "Pre-existing replacement in extracted publication copy; upstream provenance unrecorded. Unchanged during chatbot UX work.",
+    "manual_review": null,
+    "original_restoration_sha256": "b6d465afe573ea9f5a0ed648f2af09a9b8c36101abe0307d2fce2b337798130e"
+  },
+  {
+    "file": "myshop/static/images/categories/language-literature.jpg",
+    "sha256": "6af66ac7796419684e2b83e4d60af86fafab6fcf1b3b98d1e0690d49cd10c336",
+    "bytes": 87042,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/library-reference.jpg",
+    "sha256": "0bcb08a1fe807910afcb0869fc3ed53a59b5588552de8a76cca839e83ca98b4f",
+    "bytes": 133768,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/lifestyle-self-help.jpg",
+    "sha256": "00ce281b1a12ee37539d534615301eecbf2fdb92da1f119a7291e9a62355291e",
+    "bytes": 47726,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/novels.jpg",
+    "sha256": "e31a70d86dcba6b957bc88ff8779efc9d9411588238720c1e0e4ccf6fec5cb4a",
+    "bytes": 1737605,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null,
+    "artist": "Abhi Sharma",
+    "description": "Books HD"
+  },
+  {
+    "file": "myshop/static/images/categories/other.jpg",
+    "sha256": "82ecf54f0ad6c0a7969d1ea1ae9c2b273eb2b4ea1c399b12b1265a99272bb179",
+    "bytes": 126608,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/philosophy-religion.jpg",
+    "sha256": "c14bd641c21ae5b96c598d7ed91445450570462f496ee53351379a986d6ba60a",
+    "bytes": 156610,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/science.jpg",
+    "sha256": "1f88386cc7bea367bc68f425ec6048731db9e2dc6e11db30814744bc6211bad9",
+    "bytes": 60026,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/social-sciences.jpg",
+    "sha256": "41df4fe15fba890546ab489d576e9d0692fb15ac3d4e6a7320b2b2a235696f29",
+    "bytes": 52159,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/categories/technology.jpg",
+    "sha256": "e8351b2e17e46700517c24fe622aa1b58c8a58f2ec5245f06463b4b1c0f1863a",
+    "bytes": 272594,
+    "restored": false,
+    "source": "Pre-existing edited copy of the original Shutterstock image 2284126663; visible repeated watermarks retained. Unchanged during chatbot UX work.",
+    "manual_review": "Visible repeated Shutterstock watermarks",
+    "original_restoration_sha256": "c8defabe730725276303ade81c9ef5d52d9932ad792e3207f7601901c21b2f44"
+  },
+  {
+    "file": "myshop/static/images/default_profile.png",
+    "sha256": "dcf4033006d63086d0b4b62a5b9ba3286f93352ec576e786fed54ead81be2df1",
+    "bytes": 8010,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/logo.png",
+    "sha256": "e73da38a187063644f70439b0c709334142361db949621060253c3ca1ac13cb8",
+    "bytes": 1501534,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "myshop/static/images/placeholder.jpg",
+    "sha256": "f8872fbab5f44292537e31c6701712203c35e43f179cf0310b42902d916d27ec",
+    "bytes": 1755,
+    "restored": true,
+    "source": "Original university project, same relative path",
+    "manual_review": null
+  },
+  {
+    "file": "docs/screenshots/homepage.png",
+    "sha256": "425d383fabb71044fc699197cb3db8bd0038e53cfd15699c8e6060d9dc04ef60",
+    "bytes": 1948955,
+    "restored": false,
+    "source": "Previously reviewed original project screenshot",
+    "manual_review": null
+  },
+  {
+    "file": "docs/screenshots/catalogue.png",
+    "sha256": "bdd262a2f86a60113443fcf1a45235f6583f8849a5449a8afa7bf0ff13e1c47e",
+    "bytes": 696541,
+    "restored": false,
+    "source": "Previously reviewed original project screenshot",
+    "manual_review": null
+  },
+  {
+    "file": "data/public_catalogue.json",
+    "sha256": "9f4a30cfb003f8acf478bfc0789a328b700f37ffc2b7f8d6b26adde7b16a4dbf",
+    "bytes": 4745875,
+    "restored": false,
+    "source": "User-approved public Book/Category fields from the original local catalogue; no private database tables or original database IDs",
+    "books": 3260,
+    "external_cover_references": 3171,
+    "original_fallback_references": 89,
+    "email_redactions": 3,
+    "manual_review": null
+  },
+  {
+    "file": "data/public_categories.json",
+    "sha256": "fcc2051b8e337c06fb8e7c2f462f067f08858c9aee8d18feb4bd6f270d5b57b3",
+    "bytes": 306,
+    "restored": false,
+    "source": "User-approved public category names in original display order; no original database IDs",
+    "manual_review": null
+  }
+]

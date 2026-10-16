@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}My Returns{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center fw-bold">Return History</h2>
+    {% if returns %}
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Order ID</th>
+                    <th>Date Requested</th>
+                    <th>Books</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ret in returns %}
+                <tr>
+                    <td>{{ ret.id }}</td>
+                    <td>{{ ret.order.id }}</td>
+                    <td>{{ ret.created_at|date:"d.m.Y H:i" }}</td>
+                    <td>
+                        <ul class="list-unstyled mb-0">
+                            {% for item in ret.items.all %}
+                                <li>
+                                    <a href="{% url 'books:book_detail' slug=item.book.slug %}">
+                                        <strong>{{ item.book.title }}</strong>
+                                    </a>
+                                    <span class="text-muted">x{{ item.quantity }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <span class="badge
+                            {% if ret.status == "REQUESTED" %} bg-warning text-dark
+                            {% elif ret.status == "APPROVED" %} bg-success
+                            {% elif ret.status == "REJECTED" %} bg-danger
+                            {% else %} bg-secondary
+                            {% endif %}">
+                            {{ ret.status|title }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        You have not requested any returns yet.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

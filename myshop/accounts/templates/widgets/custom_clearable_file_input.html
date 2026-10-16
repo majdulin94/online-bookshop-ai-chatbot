@@ -1,0 +1,9 @@
+<input type="{{ widget.type }}" name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %} />
+{% if widget.is_initial and widget.clear_checkbox_label %}
+  <div class="clearable-file-clear">
+    <label for="{{ widget.clear_checkbox_id }}">
+      <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}" />
+      {{ widget.clear_checkbox_label }}
+    </label>
+  </div>
+{% endif %}

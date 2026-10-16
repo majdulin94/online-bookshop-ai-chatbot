@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}My Orders{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center fw-bold">Order History</h2>
+    {% if orders %}
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Items</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Return</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.created_at|date:"d.m.Y H:i" }}</td>
+                    <td>
+                        <ul class="list-unstyled mb-0">
+                            {% for item in order.items.all %}
+                            <li>
+                                <a href="{% url 'books:book_detail' slug=item.book.slug %}">
+                                    <strong>{{ item.book.title }}</strong>
+                                </a>
+                                <span class="text-muted">x{{ item.quantity }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <span class="badge
+                {% if order.status == 'PAID' %} bg-success
+                {% elif order.status == 'PENDING' %} bg-warning text-dark
+                {% else %} bg-secondary
+                {% endif %}">
+                            {{ order.status|title }}
+                        </span>
+                    </td>
+                    <td>{{ order.total_price|floatformat:2 }} €</td>
+                    <td>
+                        {% if order.can_return %}
+                        <a href="{% url 'orders:request_return' order.id %}" class="btn btn-sm btn-outline-danger">
+                            Request Return
+                        </a>
+                        {% else %}
+                        {% if order.return_expired %}
+                        <span class="text-muted small">Return period expired</span>
+                        {% else %}
+                        <span class="text-muted small">Not eligible</span>
+                        {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        You have not placed any orders yet.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

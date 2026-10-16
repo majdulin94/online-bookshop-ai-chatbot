@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Order Placed{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card p-4 shadow-sm text-center">
+                <h2 class="section-title mb-3">Thank You!</h2>
+                <p class="lead mb-4">Your order has been placed successfully. 😊</p>
+                <div class="mb-4">
+                    <strong>Order Number:</strong> #{{ order.id }}<br>
+                    <strong>Status:</strong> {{ order.get_status_display }}
+                </div>
+                <hr>
+                <h5>Order Items</h5>
+                <ul class="list-group mb-3 text-start">
+                    {% for item in order.orderitem_set.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>
+                            <strong>{{ item.book.title }}</strong>
+                            <span class="text-muted small">×{{ item.quantity }}</span>
+                        </span>
+                        <span>{{ item.total_price|floatformat:2 }} €</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <h5>Shipping Address</h5>
+                <div class="mb-2">
+                    {{ order.address_line1 }}<br>
+                    {% if order.address_line2 %}{{ order.address_line2 }}<br>{% endif %}
+                    {{ order.city }}, {{ order.country }}<br>
+                    {{ order.postal_code }}<br>
+                    {% if order.phone %}Phone: {{ order.phone }}{% endif %}
+                </div>
+                <div class="alert alert-success mt-3" role="alert">
+                    Thank you for shopping with us! 📚✨ <br>
+                    You’ll receive email updates as soon as your order is shipped.
+                </div>
+                <hr>
+                <div class="d-flex flex-column flex-md-row justify-content-center gap-2 mt-3">
+                    <a href="{% url 'orders:order_history' %}" class="btn btn-outline-secondary">
+                        <i class="fa fa-box-open me-2"></i> View My Orders
+                    </a>
+                    <a href="{% url 'books:book_list' %}" class="btn btn-outline-primary">
+                        <i class="fa fa-book-open me-2"></i> Continue Shopping
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

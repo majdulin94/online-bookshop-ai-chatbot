@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center py-5">
+  <h1 class="mb-4">Thank you for registering!</h1>
+  <p class="mb-4">
+    We’ve sent you an email. Please check your inbox and click the confirmation link to activate your account.
+  </p>
+  <a href="{% url 'book_list' %}" class="btn btn-primary">Back to Shop</a>
+</div>
+{% endblock %}

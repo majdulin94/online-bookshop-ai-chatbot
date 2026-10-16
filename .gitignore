@@ -1,0 +1,43 @@
+# Bytecode
+*.pyc
+__pycache__/
+
+# Virtuelle Umgebung
+venv/
+.venv/
+
+# VS Code Einstellungen
+.vscode/
+
+# System-Dateien
+.DS_Store
+Thumbs.db
+.env
+
+# Logs
+*.log
+
+# Migrations are source files and must be versioned.
+
+# Medien-Uploads (Profilbilder)
+media/profile_pics/
+
+# Local configuration and generated artifacts
+.env.*
+!.env.example
+staticfiles/
+media/
+ScreenShot/
+*.mp4
+*.sqlite3
+*.db
+*.sql
+*.dump
+.idea/
+.pytest_cache/
+.coverage*
+htmlcov/
+node_modules/
+.venv-validation/
+.validation/
+.publication-prep/

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Wishlist - Book Shop{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <!-- <div class="d-flex justify-content-start mb-4">
+    <a href="{% url 'cart:cart_view' %}" class="btn btn-outline-dark me-2 btn-border-radius cart-wishlist">
+      Cart ({{ request.user.cartitem_set.count }})
+    </a>
+    <a href="{% url 'cart:wishlist_view' %}" class="btn btn-dark btn-border-radius cart-wishlist">
+      Wishlist ({{ wishlist_items|length }})
+    </a>
+  </div> -->
+
+  {% if wishlist_items %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h4 class="mb-1">
+        You have {{ wishlist_items|length }} book{{ wishlist_items|length|pluralize }} in your wishlist
+      </h4>
+      <p class="text-muted mb-0">
+        Books in your wishlist are not reserved — grab them before they’re gone.
+      </p>
+    </div>
+    <div>
+      <form method="POST" action="{% url 'cart:move_all_to_cart' %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary me-2"
+          {% if wishlist_items|length == 0 or not has_available_books %}disabled{% endif %}>
+          <i class="fas fa-shopping-cart"></i> Add All to Cart
+        </button>
+      </form>
+      <form method="POST" action="{% url 'cart:clear_wishlist' %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger">
+          <i class="fas fa-trash"></i> Clear Wishlist
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for book in wishlist_items %}
+      {% if book and book.slug %}
+      <div class="col">
+        <div class="card h-100 border-0 shadow-sm">
+          <img src="{% if book.thumbnail %}{{ book.thumbnail }}{% else %}{% static 'images/placeholder.jpg' %}{% endif %}"
+            class="card-img-top" alt="{{ book.title }}" style="height: 220px; object-fit: cover;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-1">
+              <a href="{% url 'books:book_detail' slug=book.slug %}" class="text-dark text-decoration-none">
+                {{ book.title }}
+              </a>
+            </h5>
+            <p class="card-text mb-1">{{ book.authors }}</p>
+            <p class="text-muted small mb-2">{{ book.category }}</p>
+            <div class="mt-auto d-flex align-items-center gap-2">
+              <form method="POST" action="{% url 'cart:move_to_cart_from_wishlist' book.slug %}" class="me-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-primary btn-sm" title="Add to Cart"
+                  {% if book.stock_status == "Out of Stock" %}disabled{% endif %}>
+                  <i class="fas fa-shopping-cart"></i>
+                </button>
+              </form>
+              <form method="POST" action="{% url 'cart:remove_from_wishlist' book.slug %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger btn-sm" title="Remove from Wishlist">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </div>
+            {% if book.stock_status == "Out of Stock" %}
+              <span class="badge bg-danger mt-2">Out of Stock</span>
+            {% elif book.stock_status == "Limited Stock" %}
+              <span class="badge bg-warning mt-2">Limited Stock</span>
+            {% elif book.stock_status %}
+              <span class="badge bg-success mt-2">{{ book.stock_status }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    {% empty %}
+      <div class="col-12 text-center">
+        <p>No books in your wishlist.</p>
+      </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <div class="alert alert-info mt-5 text-center">
+      <h4>Your wishlist is empty</h4>
+      <p class="text-muted">Add some books to your wishlist and they will appear here.</p>
+      <a href="{% url 'books:book_list' %}" class="btn btn-outline-primary mt-3">Browse Books</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

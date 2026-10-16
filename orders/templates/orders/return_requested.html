@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Return Requested{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-success text-center p-4">
+        <h4 class="mb-3">Return Requested</h4>
+        <p>
+            Your return request for order <strong>#{{ return_request.order.id }}</strong> has been submitted.<br>
+            We will review your request and contact you soon.
+        </p>
+        <a href="{% url 'orders:order_history' %}" class="btn btn-dark mt-3">Back to Orders</a>
+    </div>
+</div>
+{% endblock %}

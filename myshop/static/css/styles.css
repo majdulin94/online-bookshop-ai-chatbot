@@ -1,0 +1,972 @@
+:root {
+  --primary: #45B3E6;
+  --lavender: #BFA4F5;
+  --mint: #53E0A5;
+  --yellow: #FFF685;
+  --peach: #FFC58B;
+  --pink: #f898c0;
+  --white: #fff;
+  --dark-text: #222F3E;
+  --light-bg: #F8FAFC;
+}
+
+/* ====== Reset & Basics ====== */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: linear-gradient(90deg, #f7fafc 0%, #f1f1f1 50%, #eafcff 100%) !important;
+  color: var(--dark-text);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 85px;
+  padding-top: 60px;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+main.container,
+main.container-fluid {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding-bottom: 2rem;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.gradient-footer {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--lavender) 100%) !important;
+  color: var(--white) !important;
+}
+
+/* ====== Navbar & Header ====== */
+.navbar {
+  height: 85px !important;
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1050;
+}
+
+.navbar.bg-secondary {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--lavender) 100%) !important;
+  color: var(--white) !important;
+  border-bottom: none;
+}
+
+.navbar-inner-custom {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.navbar .navbar-brand {
+  margin-left: 0 !important;
+  gap: 0 !important;
+}
+
+.navbar .navbar-brand span {
+  background: linear-gradient(
+    90deg,
+    rgba(91, 9, 199, 0.963) 32%,
+    rgba(145, 76, 214, 0.801) 65%,
+    #ffb7d5 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family:"Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 1000;
+  letter-spacing: 0.01em;
+  font-size: 2.7rem;
+  padding-left: 0 !important;
+}
+.navbar .nav-link {
+  color: var(--white) !important;
+  font-weight: 500;
+  font-size: 1.12rem;
+  transition: color 0.18s;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--yellow) !important;
+}
+
+.navbar .fa-lg,
+.navbar .fa-solid,
+.navbar .fa-regular,
+.navbar .fa-brands {
+  font-size: 1.12em !important;
+}
+
+.navbar .nav-link .fa {
+  margin-right: 0.45em;
+}
+
+.position-relative .fa {
+  vertical-align: middle;
+}
+
+.navbar .navbar-nav {
+  gap: 4px;
+}
+
+.navbar .navbar-nav.ms-auto {
+  gap: 10px !important;
+}
+
+.navbar .navbar-nav.mx-auto {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Enlarge icons and main Navbar text (Home, Categories, etc.) */
+.navbar .navbar-nav.mx-auto .nav-link {
+  font-size: 1.12rem;
+  padding-left: 1.9rem;
+  padding-right: 1.35rem;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+}
+
+.navbar .navbar-nav.mx-auto .fa {
+  font-size: 1.12em !important;
+  margin-right: 0.55em;
+}
+.center-nav {
+  margin-left: 180px !important;
+}
+
+/* Right-side Navbar */
+.navbar .navbar-nav.ms-auto .nav-link {
+  font-size: 1.12rem;
+  min-height: 44px;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav.ms-auto {
+  justify-content: flex-end;
+  min-width: 140px;
+  margin-right: 60px;
+  gap:14px;
+}
+
+.navbar .navbar-nav.ms-auto .fa {
+  font-size: 1.12em !important;
+}
+
+.navbar .navbar-nav.ms-auto img.rounded-circle {
+  width: 34px !important;
+  height: 34px !important;
+}
+
+.dropdown-menu {
+  font-size: 1.12rem;
+  min-width: 150px;
+  border-radius: 13px;
+}
+
+.dropdown-item {
+  padding: 8px 18px;
+}
+
+/* ====== Book Logo Animation ====== */
+.book-logo {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.book-page {
+  animation: flip-page 2.4s infinite linear;
+  transform-origin: left center;
+}
+
+@keyframes flip-page {
+  0%   { transform: rotateY(0deg); opacity: 1; }
+  20%  { transform: rotateY(-40deg); opacity: 0.7; }
+  65%  { transform: rotateY(-160deg); opacity: 0; }
+  90%  { transform: rotateY(-180deg); opacity: 0; }
+  100% { transform: rotateY(0deg); opacity: 1; }
+}
+
+/* ====== Hero Section ====== */
+.hero-section {
+  background: url("../images/books.jpg") center center/cover no-repeat;
+  min-height: 500px;
+  height: 90vh;
+  width: 100vw;
+  position: relative;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 51, 81, 0.43);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(108, 194, 234, 0.84) 0%, rgba(191,164,245,0.78) 100%);
+  box-shadow: 0 8px 32px rgba(60, 60, 60, 0.13);
+  border-radius: 18px;
+  padding: 2.2rem 2.8rem;
+  color: #fff;
+  text-align: center;
+  width: 98vw;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.hero-content h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  color: #f8faff;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+.hero-content .btn {
+  font-size: 1.15rem;
+  padding: 13px 34px;
+  font-weight: 500;
+  border-radius: 22px;
+}
+
+/* ====== Section Titles & Headers ====== */
+h1,
+h2,
+h3,
+h5,
+.section-title {
+  font-weight: 700;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--primary), var(--mint), var(--lavender));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ====== Cards (Book, Category, Review) ====== */
+.card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  background: var(--white);
+  margin-bottom: 1.5rem;
+  min-height: 345px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.015);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+}
+
+.category-card img {
+  height: 190px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+  transition: transform 0.3s;
+}
+
+.category-card:hover img {
+  transform: scale(1.03);
+}
+
+.card-img-top,
+.carousel-item img {
+  height: 220px;
+  max-height: 220px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.09);
+  transition: transform 0.3s;
+  margin-bottom: 6px;
+}
+
+.card-img-top:hover,
+.carousel-item img:hover {
+  transform: scale(1.04);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
+
+.review-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.review-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ====== Badges & Labels ====== */
+.bg-pink {
+  background-color: var(--pink) !important;
+  color: #fff;
+}
+
+.bg-yellow {
+  background-color: var(--yellow) !important;
+  color: #444;
+}
+
+.bg-cyan {
+  background-color: var(--mint) !important;
+  color: #fff;
+}
+
+.badge.bg-info {
+  background: linear-gradient(90deg, var(--primary), var(--mint), var(--lavender));
+  color: var(--dark-text);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  font-size: 1em;
+  box-shadow: 0 2px 6px rgba(69, 179, 230, 0.08);
+  border-radius: 0.65em;
+}
+
+.badge.bg-success {
+  background: var(--mint) !important;
+  color: var(--dark-text) !important;
+}
+
+.badge.bg-warning {
+  background: var(--yellow) !important;
+  color: #888 !important;
+}
+
+.badge.bg-danger {
+  background: var(--pink) !important;
+  color: #fff !important;
+}
+
+/* ====== Buttons ====== */
+.btn-primary,
+.btn-outline-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--white) !important;
+  border-radius: 50px;
+  padding: 10px 22px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+  background: var(--mint) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--mint) !important;
+}
+
+.btn-success {
+  background: var(--mint) !important;
+  border-color: var(--mint) !important;
+  color: var(--dark-text) !important;
+}
+
+.btn-success:hover {
+  background: var(--primary) !important;
+  color: var(--white) !important;
+}
+
+.btn-outline-danger,
+.btn-danger {
+  border-color: var(--pink) !important;
+  color: var(--pink) !important;
+  background: none !important;
+}
+
+.btn-outline-danger:hover,
+.btn-danger:hover {
+  background: var(--pink) !important;
+  color: var(--white) !important;
+}
+
+/* ====== Wishlist/Cart Animation & Book Actions ====== */
+.btn-wishlist.active,
+.heart-icon.active {
+  color: var(--pink) !important;
+  animation: heartBeat 0.4s;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.3);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.book-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.heart-icon,
+.cart-icon {
+  color: var(--primary);
+  background: var(--yellow);
+  border-radius: 50%;
+  padding: 7px 9px 6px 9px;
+  font-size: 1.35em;
+  border: none;
+  cursor: pointer;
+  transition: color 0.17s, background 0.17s, transform 0.15s;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+.heart-icon.active {
+  color: var(--pink);
+  background: var(--white);
+}
+
+.cart-icon.in-cart {
+  color: var(--mint);
+  background: var(--white);
+}
+
+.heart-icon:hover,
+.cart-icon:hover {
+  background: var(--lavender);
+  transform: scale(1.12);
+}
+
+/* ====== Carousel Controls ====== */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
+  z-index: 10;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 6px;
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+/* ====== Chatbot Floating Button ====== */
+#open-chatbot-btn {
+  position: fixed;
+  bottom: 38px;
+  right: 38px;
+  width: 190px !important;
+  height: 190px !important;
+  z-index: 1055;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.14s, box-shadow 0.19s;
+}
+#open-chatbot-btn:hover {
+  transform: scale(1.12) rotate(-7deg);
+  box-shadow:
+    0 12px 26px rgba(69, 179, 230, 0.12),
+    0 1.5px 6px rgba(191, 164, 245, 0.07);
+}
+#lottie-chatbot-icon {
+  width: 190px !important;
+  height: 190px !important;
+  display: inline-block;
+  pointer-events: none;
+  margin: 0 !important;
+}
+
+/* ====== Chatbot Window ====== */
+#chatbot-window {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 40px;
+  width: 400px;
+  max-width: 98vw;
+  max-height: 80vh;
+  z-index: 1060;
+  border-radius: 24px;
+  box-shadow:
+    0 12px 44px rgba(69, 179, 230, 0.18),
+    0 4px 14px rgba(191, 164, 245, 0.13);
+  background: linear-gradient(120deg, #f8f9fa 80%, #eafcff 100%);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  font-size: 1.05em;
+}
+@media (max-width: 600px) {
+  #chatbot-window {
+    width: 98vw !important;
+    right: 1vw;
+    left: 1vw;
+    min-width: unset;
+  }
+  #chatbot-toast {
+    right: 2vw !important;
+    left: 2vw !important;
+    bottom: 65vw !important;
+    min-width: unset !important;
+    max-width: 97vw !important;
+    font-size: 0.99em !important;
+  }
+}
+
+/* ====== Header & Footer ====== */
+#chatbot-window .card-header,
+#chatbot-window .card-footer {
+  border-radius: 18px 18px 0 0;
+}
+#chatbot-window .card-header {
+  background: linear-gradient(90deg, #6741d9 30%, #4fd1c5 100%) !important;
+  color: #fff !important;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;  /* keep title & buttons on one line */
+  align-items: center;
+  padding: 0.75rem 1rem !important; /* more horizontal room */
+  font-size: 1.05em !important;
+}
+#chatbot-window .card-footer {
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ====== Title ====== */
+.chatbot-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem !important;  /* slightly smaller so it fits */
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  white-space: nowrap;         /* no wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+.chatbot-title-icon {
+  width: 100px;
+  height: 60px;
+}
+.chatbot-title-text span {
+  color: #fafafa;
+  font-weight: 900;
+  text-shadow: 0 1px 3px #4ae0a73c;
+}
+
+/* ====== Messages Area ====== */
+#chatbot-messages {
+  flex: 1 1 auto;             /* grow & scroll */
+  padding: 0.5rem 1rem;
+  overflow-y: auto;
+  font-size: 1.05em;
+}
+.chatbot-msg {
+  display: flex;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.chatbot-msg.user {
+  justify-content: flex-end;
+}
+.chatbot-msg.bot {
+  justify-content: flex-start;
+}
+
+/* ====== Message Bubbles ====== */
+.chatbot-bubble {
+  max-width: 75%;
+  border-radius: 20px;
+  box-shadow: 0 3px 13px rgba(175, 175, 175, 0.07);
+  word-break: break-word;
+  padding: 16px 24px !important;
+}
+.chatbot-msg.user .chatbot-bubble {
+  background: linear-gradient(90deg, rgba(69,179,230,0.84), rgba(191,164,245,0.78));
+  color: #fff;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 22px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 2px 12px rgba(69,179,230,0.08);
+}
+.chatbot-msg.bot .chatbot-bubble {
+  background: #f5f4fa;
+  color: var(--dark-text);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 22px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+#chatbot-messages .chatbot-msg + .chatbot-msg {
+  margin-top: 6px;
+}
+
+/* ====== Quick Replies ====== */
+#chatbot-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #e2e8f0;
+  max-height: 160px;           /* cap height so it doesn’t push out input */
+  overflow-y: auto;
+}
+.quick-reply-btn {
+  flex: 0 1 auto;              /* allow more pills per row */
+  white-space: normal;
+  text-align: center;
+  padding: 4px 8px !important;
+  font-size: 0.85em !important;
+  border-radius: 12px !important;
+}
+
+/* ====== Input Row ====== */
+#chatbot-form {
+  display: flex;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+}
+#chatbot-input {
+  flex: 1;
+  font-size: 0.95em !important;
+  padding: 6px 10px !important;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 24px 0 0 24px !important;
+  margin: 0;
+}
+#chatbot-form .btn {
+  font-size: 0.95em !important;
+  padding: 8px 16px !important;
+  min-width: 0;
+  border-radius: 0 24px 24px 0 !important;
+  margin: 0;
+}
+
+/* ====== Book Cards in Chatbot ====== */
+.chatbot-book-card .card-body {
+  font-size: 1.05em;
+}
+
+/* ====== Mini Book Card in Chatbot (for small book carts view) ====== */
+.chatbot-mini-card {
+  background: #fafbff;
+  border: 1px solid #e7e9f3;
+  max-width: 98%;
+  transition: box-shadow 0.2s;
+  font-size: 0.96em;
+  align-items: center;
+  gap: 6px;
+}
+.chatbot-mini-card:hover {
+  box-shadow: 0 2px 10px 0 #d2e3fc88;
+}
+.chatbot-mini-card .mini-book-cover {
+  width: 40px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 1px 6px #eee;
+}
+.chatbot-mini-card .mini-book-title {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #423050;
+  max-width: 190px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.chatbot-mini-card .mini-book-author {
+  font-size: 0.82rem;
+  color: #8e8e95;
+  max-width: 160px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.chatbot-mini-card .d-flex.gap-2 {
+  margin-top: 2px;
+  gap: 10px !important;
+}
+.chatbot-mini-card i.fas {
+  font-size: 1.09em;
+  cursor: pointer;
+  opacity: 0.84;
+  transition: color 0.11s;
+}
+.chatbot-mini-card a:hover .fa-eye { color: #007bff; }
+.chatbot-mini-card a:hover .fa-cart-plus { color: #19bc63; }
+.chatbot-mini-card a:hover .fa-heart { color: #ee4672; }
+
+/* ====== Miscellaneous ====== */
+input[readonly],
+textarea[readonly] {
+  background-color: #e9ecef;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.star-rating {
+  font-size: 22px;
+  color: #ffd700;
+  cursor: pointer;
+}
+
+.star {
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.star.filled,
+.star:hover,
+.star:hover ~ .star {
+  color: #ffd700;
+}
+
+.vote-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.vote-buttons button {
+  padding: 5px 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.vote-buttons button:hover {
+  background-color: #ffd700;
+  color: #fff;
+}
+
+.category-showcase,
+.section-bg,
+.featured-section {
+  background: linear-gradient(90deg, #f7fafc, #f1f1f1 40%, #eafcff 100%);
+}
+
+.latest-books {
+  background: #fff;
+}
+/* Hide default arrows in input[type=number] (all browsers) */
+/* Chrome, Safari, Edge */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+}
+
+/* ====== Responsive Media Queries ====== */
+@media (max-width: 991px) {
+  /* Navbar adjustments */
+  .navbar.bg-secondary {
+    height: 56px !important;
+    border-radius: 0 0 12px 12px;
+    padding: 0 !important;
+  }
+  .navbar-inner-custom {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-left: 0 !important;
+    height: 56px !important;
+  }
+  .navbar .navbar-brand {
+    font-size: 1.15rem !important;
+    margin-right: 8px !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .navbar .navbar-brand span {
+    font-size: 1.3rem !important;
+    margin-left: 0 !important;
+  }
+  .navbar .navbar-nav.mx-auto .nav-link,
+  .navbar .navbar-nav.ms-auto .nav-link {
+    font-size: 1rem;
+    height: 36px;
+    padding: 0 0.75rem;
+    margin-top: 2px;
+  }
+  .navbar .fa-lg,
+  .navbar .fa-solid,
+  .navbar .fa-regular,
+  .navbar .fa-brands {
+    font-size: 1.1em !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #open-chatbot-btn,
+  #lottie-chatbot-icon {
+    width: 90px !important;
+    height: 90px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar.bg-secondary {
+    height: 48px !important;
+    border-radius: 0 0 8px 8px;
+    padding: 0 !important;
+  }
+  .navbar-inner-custom {
+    height: 48px !important;
+    padding: 0 2px !important;
+  }
+  .navbar .navbar-brand {
+    font-size: 0.93rem;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .navbar .navbar-nav.mx-auto .nav-link,
+  .navbar .navbar-nav.ms-auto .nav-link {
+    font-size: 0.96rem;
+    height: 32px;
+    padding: 0 0.45rem;
+  }
+  .navbar .fa-lg,
+  .navbar .fa-solid,
+  .navbar .fa-regular,
+  .navbar .fa-brands {
+    font-size: 1.1rem !important;
+  }
+  .hero-section {
+    min-height: 160px;
+    height: 19vh;
+  }
+  .hero-content {
+    padding: 0.8rem 0.3rem;
+    max-width: 99vw;
+  }
+  .hero-content h1 {
+    font-size: 1.13rem;
+  }
+  .hero-content p {
+    font-size: 0.85rem;
+  }
+  .card-img-top,
+  .carousel-item img {
+    max-height: 80px;
+  }
+  .card {
+    min-height: 130px;
+  }
+}

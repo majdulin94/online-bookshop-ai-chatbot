@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Request a Return{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+            <h2 class="mb-3">Request a Return</h2>
+            <p class="text-muted">
+                You can request a return for items from order <strong>#{{ order.id }}</strong>.<br>
+                Please specify the quantity for each book you want to return.
+            </p>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ formset.management_form }}
+                <table class="table table-bordered align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Book</th>
+                            <th>Ordered Quantity</th>
+                            <th>Return Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for form, item in forms_and_items %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'books:book_detail' slug=item.book.slug %}">
+                                    <strong>{{ item.book.title }}</strong>
+                                </a>
+                                {{ form.book.as_hidden }} {# فقط كـ hidden #}
+                            </td>
+                            <td>
+                                {{ item.quantity }}
+                            </td>
+                            <td style="width:120px;">
+                                {{ form.quantity }}
+                                {% for error in form.quantity.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% if formset.non_form_errors %}
+                <div class="alert alert-danger">{{ formset.non_form_errors }}</div>
+                {% endif %}
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-danger">Submit Return Request</button>
+                    <a href="{% url 'orders:order_history' %}" class="btn btn-outline-secondary ms-2">Back to Orders</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
