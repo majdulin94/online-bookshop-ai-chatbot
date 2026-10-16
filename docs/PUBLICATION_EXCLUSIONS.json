@@ -1,0 +1,20 @@
+{
+  "scope": "Local files excluded from the Git publication tree and allowlist; retain locally unless the owner decides otherwise.",
+  "files": [
+    {
+      "file": "docs/screenshots/Home page.png",
+      "status": "excluded-local-only",
+      "reason": "Unused supplementary homepage screenshot; README uses homepage.png. Not required for application or portfolio screenshots."
+    },
+    {
+      "file": "docs/screenshots/Demo chatbot.mp4",
+      "status": "excluded-local-only",
+      "reason": "Local demo recording; video is not included in Git or the publication export. README retains its hosted demo-release link."
+    },
+    {
+      "file": "docs/screenshots/cart.png",
+      "status": "deleted",
+      "reason": "Owner deleted this screenshot. Its deletion is staged; no README reference or publication allowlist entry remains."
+    }
+  ]
+}

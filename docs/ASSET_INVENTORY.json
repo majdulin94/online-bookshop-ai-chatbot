@@ -7,7 +7,12 @@
     "source": "Original university project, same relative path",
     "manual_review": null,
     "animation_name": "Main Scene",
-    "exporter": "@lottiefiles/creator 1.46.0"
+    "exporter": "@lottiefiles/creator 1.46.0",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/animations/book-search01.json",
@@ -17,7 +22,12 @@
     "source": "Original university project, same relative path",
     "manual_review": null,
     "animation_name": "arcax_3",
-    "exporter": "LottieFiles AE 0.1.20"
+    "exporter": "LottieFiles AE 0.1.20",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/animations/bookshop-logo.json",
@@ -25,7 +35,12 @@
     "bytes": 137704,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/animations/chatbot-animated.json",
@@ -35,7 +50,12 @@
     "source": "Original university project, same relative path",
     "manual_review": null,
     "animation_name": "Bot Say Hello",
-    "exporter": "@lottiefiles/toolkit-js 0.26.1"
+    "exporter": "@lottiefiles/toolkit-js 0.26.1",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/animations/chatbot-animated01.json",
@@ -45,7 +65,12 @@
     "source": "Original university project, same relative path",
     "manual_review": null,
     "animation_name": "bot 01 12 thanks",
-    "exporter": "@lottiefiles/toolkit-js 0.21.3"
+    "exporter": "@lottiefiles/toolkit-js 0.21.3",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/animations/chatbot-titel.json",
@@ -54,7 +79,12 @@
     "restored": true,
     "source": "Original university project, same relative path",
     "manual_review": null,
-    "animation_name": "chatbot"
+    "animation_name": "chatbot",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/animations/chatbot-titel01.json",
@@ -64,7 +94,12 @@
     "source": "Original university project, same relative path",
     "manual_review": null,
     "animation_name": "chatbot2",
-    "exporter": "LottieFiles AE 0.1.20"
+    "exporter": "LottieFiles AE 0.1.20",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/animations/chatbot-titel02.json",
@@ -73,7 +108,12 @@
     "restored": true,
     "source": "Original university project, same relative path",
     "manual_review": null,
-    "animation_name": "chatbot final"
+    "animation_name": "chatbot final",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/books.jpg",
@@ -81,7 +121,12 @@
     "bytes": 238477,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/arts-design.jpg",
@@ -90,7 +135,12 @@
     "restored": true,
     "source": "Original university project, same relative path",
     "manual_review": null,
-    "description": "Colorful vector hand drawn doodle cartoon set of design theme items, objects and symbols"
+    "description": "Colorful vector hand drawn doodle cartoon set of design theme items, objects and symbols",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/biography-autobiography.jpg",
@@ -100,7 +150,12 @@
     "source": "Original university project, same relative path",
     "manual_review": null,
     "artist": "Zolak",
-    "description": "Biography word written on wood block, life concept."
+    "description": "Biography word written on wood block, life concept.",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/business.jpg",
@@ -108,7 +163,12 @@
     "bytes": 193094,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/education.jpg",
@@ -116,7 +176,12 @@
     "bytes": 57149,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/health-medical.jpg",
@@ -124,16 +189,25 @@
     "bytes": 53790,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/history-politics.jpg",
     "sha256": "2c9ab9e8d5c4130e6050ae9f7b4870e848d1d53076a7ce6406bef27f74b95432",
     "bytes": 300994,
     "restored": false,
-    "source": "Pre-existing replacement in extracted publication copy; upstream provenance unrecorded. Unchanged during chatbot UX work.",
+    "source": "Current user-provided replacement; upstream provenance unrecorded; retained as supplied.",
     "manual_review": null,
-    "original_restoration_sha256": "b6d465afe573ea9f5a0ed648f2af09a9b8c36101abe0307d2fce2b337798130e"
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/language-literature.jpg",
@@ -141,7 +215,12 @@
     "bytes": 87042,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/library-reference.jpg",
@@ -149,7 +228,12 @@
     "bytes": 133768,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/lifestyle-self-help.jpg",
@@ -157,7 +241,12 @@
     "bytes": 47726,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/novels.jpg",
@@ -167,7 +256,12 @@
     "source": "Original university project, same relative path",
     "manual_review": null,
     "artist": "Abhi Sharma",
-    "description": "Books HD"
+    "description": "Books HD",
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/other.jpg",
@@ -175,7 +269,12 @@
     "bytes": 126608,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/philosophy-religion.jpg",
@@ -183,7 +282,12 @@
     "bytes": 156610,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/science.jpg",
@@ -191,7 +295,12 @@
     "bytes": 60026,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/social-sciences.jpg",
@@ -199,16 +308,25 @@
     "bytes": 52159,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/categories/technology.jpg",
-    "sha256": "e8351b2e17e46700517c24fe622aa1b58c8a58f2ec5245f06463b4b1c0f1863a",
-    "bytes": 272594,
+    "sha256": "bd72c81f12393eff6f1edfdd4f41753f8342bdbdb932bb1ddabc9720fe54e38e",
+    "bytes": 367973,
     "restored": false,
-    "source": "Pre-existing edited copy of the original Shutterstock image 2284126663; visible repeated watermarks retained. Unchanged during chatbot UX work.",
-    "manual_review": "Visible repeated Shutterstock watermarks",
-    "original_restoration_sha256": "c8defabe730725276303ade81c9ef5d52d9932ad792e3207f7601901c21b2f44"
+    "source": "Current user-provided replacement; upstream provenance unrecorded; retained as supplied.",
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/default_profile.png",
@@ -216,7 +334,12 @@
     "bytes": 8010,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/logo.png",
@@ -224,7 +347,12 @@
     "bytes": 1501534,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "myshop/static/images/placeholder.jpg",
@@ -232,7 +360,12 @@
     "bytes": 1755,
     "restored": true,
     "source": "Original university project, same relative path",
-    "manual_review": null
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    }
   },
   {
     "file": "docs/screenshots/homepage.png",
@@ -269,5 +402,19 @@
     "restored": false,
     "source": "User-approved public category names in original display order; no original database IDs",
     "manual_review": null
+  },
+  {
+    "file": "docs/screenshots/Chatbot.png",
+    "sha256": "ab606bd7527e5684366d65a52d44f634dfde7b723bc4cb0a02f35742b0c633b6",
+    "bytes": 65421,
+    "restored": false,
+    "source": "Current project chatbot screenshot supplied by the project owner; shows a reading prompt and public catalogue recommendation.",
+    "manual_review": null,
+    "visual_review": {
+      "date": "2026-10-16",
+      "visible_watermark": false,
+      "private_information_detected": false
+    },
+    "metadata_review": "No sensitive image metadata detected."
   }
 ]

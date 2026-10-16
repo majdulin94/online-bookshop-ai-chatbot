@@ -44,8 +44,10 @@ docs/ASSETS.md
 docs/ASSET_INVENTORY.json
 docs/ATTRIBUTION.md
 docs/CHATBOT_UX.md
+docs/PUBLICATION_EXCLUSIONS.json
 docs/PUBLICATION_FILES.txt
 docs/VALIDATION.md
+docs/screenshots/Chatbot.png
 docs/screenshots/catalogue.png
 docs/screenshots/homepage.png
 manage.py

@@ -10,10 +10,11 @@ The restored application runs with Python 3.11.12 and the credential-free
 - Publication scans cover source, documentation, image metadata and animations.
 - Separate private checks compare against 14 known team-identity patterns and
   six current/historical secret patterns, without publishing those values.
-- All 27 restored static assets have the same SHA-256 hashes as the original.
+- Current asset hashes are recorded in the inventory; the technology and
+  history/politics category images are owner-supplied replacements.
 - Original source and Git metadata are checked against 1,344 pre-change hashes.
 
-## Visual comparison
+## Earlier visual comparison
 
 Local headless Chrome captures use a 1440 × 1100 viewport. The restored app is
 compared with the original project's templates and static assets, rendered with
@@ -37,8 +38,8 @@ database. External CDN and cover requests need network access.
 Fifteen embedded raster images in the Lottie files were visually inspected:
 they depict illustrated books and robot parts, with no private uploads found.
 Artist credits in original image metadata are preserved as third-party
-attribution. The two visible stock-watermark issues are listed in
-[ATTRIBUTION.md](ATTRIBUTION.md).
+attribution. Current media review found no visible watermarks in reviewed
+publishable local assets; see [ATTRIBUTION.md](ATTRIBUTION.md).
 
 ## Publication scope
 
@@ -62,9 +63,22 @@ The subsequent [chatbot UX restoration](CHATBOT_UX.md) preserves the original
 three sentiment emojis and restores one concise welcome. Chatbot-specific
 Django tests, live local prompt checks and HTTP smoke checks are included.
 
-At the start of chatbot UX work, the extracted publication copy already
-contained an edited `technology.jpg` and a replacement `history-politics.jpg`.
-Both files were preserved without modification; their reviewed hashes are now
-recorded in the inventory. The current history image has no visible watermark.
-The technology image still has repeated Shutterstock watermarks. Earlier
-restoration/hash and 123RF notes describe the prior original-asset snapshot.
+
+## Current publication preparation
+
+The earlier pixel comparisons preceded the latest media replacements; they are
+not a claim that the current category images match the former images. Current
+media hashes and visual review are recorded in the inventory. No application
+code, tests, migrations or settings changed during publication preparation.
+
+The staged Git tree must exactly match `PUBLICATION_FILES.txt`. The unmodified
+publication verifier is run against an export of those staged bytes, with asset
+hashes and image metadata checked there. Local media listed in
+[PUBLICATION_EXCLUSIONS.json](PUBLICATION_EXCLUSIONS.json) is intentionally not
+exported. Running the strict directory verifier directly in the development
+folder will still report those retained, excluded local media files.
+
+System checks, migration drift, 89 Django tests, 23 chatbot tests, nine DOM tests
+and 21 HTTP smoke checks are rerun with isolated storage. Test databases, media
+and static output use temporary storage outside the project. No existing
+development database or credentials are loaded for those checks.

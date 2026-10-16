@@ -44,19 +44,20 @@ See [asset notes](docs/ASSETS.md) and [validation scope](docs/VALIDATION.md).
 
 ## Screenshots
 
-Project UI captures from the original team-project interface:
+Final project UI screenshots currently included in `docs/screenshots/`:
 
 ![Homepage](docs/screenshots/homepage.png)
 
 ![Catalogue](docs/screenshots/catalogue.png)
 
-These historical captures show the original visual assets, which have also been
-restored in the runnable sanitized snapshot. The wishlist and cart captures are
-withheld because their footers contain unverified contact details.
+![Chatbot](docs/screenshots/Chatbot.png)
 
 ## Demo
 
 [Watch the chatbot demo](https://github.com/majdulin94/online-bookshop-ai-chatbot/releases/tag/v1.0.0)
+
+The release URL currently returns HTTP 404 publicly; verify its availability
+before sharing the demo link.
 
 For a local credential-free demo, use the isolated setup below. OpenAI, Stripe,
 SMTP and Google Books network calls are disabled in these settings. Rule-based
@@ -173,14 +174,16 @@ The smoke script modifies only the isolated SQLite demo database and creates
 synthetic users/reviews/orders. It exercises 21 live HTTP checks, including
 expected payment safety rejections. The publication check reports file categories and problems without printing secret values.
 
-Validation on October 15, 2026:
+Validation on October 16, 2026:
 
 - Fresh migrations and Django checks passed on SQLite and PostgreSQL 14.
-- 81 Django tests passed on each database backend.
-- 5 JavaScript/DOM regression tests passed.
+- 89 Django tests passed.
+- 23 chatbot tests passed.
+- 9 JavaScript/DOM regression tests passed.
 - 21 live HTTP smoke checks passed against the isolated SQLite server.
-- `pip check` passed; dependency and npm audits reported no known vulnerabilities
-  at validation time. This does not guarantee absence of vulnerabilities.
+- Privacy and secret scans passed.
+- `pip check` and dependency audits reported no known vulnerabilities at
+  validation time.
 
 The earlier placeholder snapshot passed SQLite/PostgreSQL tests and HTTP smoke
 checks. Current restoration results and visual-comparison scope are recorded in
@@ -219,6 +222,6 @@ This was a university team project at **Berliner Hochschule für Technik (BHT)**
   audit. External CDNs and cover hosts may require network access.
 - Chat throttling uses Django's cache and is per browser session. Shared-cache and
   edge-level limits are needed for a multi-process public deployment.
-- Original design artwork and animations are preserved. Two visibly watermarked
-  category images require manual review; see [attribution](docs/ATTRIBUTION.md).
-  A project-wide code license has not been selected.
+- Original project artwork and animations are preserved where publication-safe.
+  Replaced assets and remaining publication concerns are documented in
+  [attribution](docs/ATTRIBUTION.md). A project-wide code license has not been selected.

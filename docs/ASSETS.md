@@ -4,7 +4,8 @@ The original design is restored; no generic replacement SVGs remain.
 See [attribution and the current watermark review](ATTRIBUTION.md).
 The machine-readable [inventory](ASSET_INVENTORY.json) pins all reviewed assets.
 
-Exactly these 27 original static assets were restored without changing their bytes:
+These 27 static asset paths are included. The original assets are retained, except
+for the owner-supplied technology and history/politics replacements:
 
 - `myshop/static/animations/book-search.json`
 - `myshop/static/animations/book-search01.json`
@@ -50,9 +51,8 @@ were excluded. Three email occurrences in book descriptions were replaced with
 `[contact omitted]`; the remaining public fields and cover references are intact.
 Prices and availability are original project demonstration values.
 
-At the start of chatbot UX work, the extracted publication copy already
-contained an edited `technology.jpg` and a replacement `history-politics.jpg`.
-Both files were preserved without modification; their reviewed hashes are now
-recorded in the inventory. The current history image has no visible watermark.
-The technology image still has repeated Shutterstock watermarks. Earlier
-restoration/hash and 123RF notes describe the prior original-asset snapshot.
+Current media review found no visible watermarks in the reviewed local
+publishable images or embedded animation artwork. Screenshot references are
+`homepage.png`, `catalogue.png` and `Chatbot.png`; all exist. Hashes and provenance
+are recorded in the inventory. Non-public local media is documented in
+[publication exclusions](PUBLICATION_EXCLUSIONS.json).
