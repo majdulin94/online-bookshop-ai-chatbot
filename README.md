@@ -56,8 +56,7 @@ withheld because their footers contain unverified contact details.
 
 ## Demo
 
-Hosted video: **Coming soon**. A future hosted demo link will be added after
-privacy and rights review. The original large recording is not included.
+[Watch the chatbot demo](https://github.com/majdulin94/online-bookshop-ai-chatbot/releases/tag/v1.0.0)
 
 For a local credential-free demo, use the isolated setup below. OpenAI, Stripe,
 SMTP and Google Books network calls are disabled in these settings. Rule-based
